@@ -16,6 +16,8 @@ float e_11 = 1.0f;
 
 Mat2& operator*=(Mat2 const& m);
 float det() const;
+Mat2& operator*=(float lambda);
+
 
 };
 
@@ -25,7 +27,8 @@ Vec2 operator*(Vec2 const& m, Mat2 const& v);
 Mat2 inverse(Mat2 const& m);
 Mat2 transpose(Mat2 const& m);
 Mat2 make_rotation_mat2(float phi);
-
+Mat2 operator*(float lambda, Mat2 const& m);
+Mat2 operator*(Mat2 const& m, float lambda);
 
 
 #endif

@@ -44,3 +44,33 @@ Vec2 operator*(Vec2 const& v, Mat2 const& m)
 
   return result;
 }
+
+float Mat2::det() const
+{
+  float result = e_00 * e_11 - e_10 * e_01;
+  return result;
+}
+
+Mat2& Mat2::operator*=(float lambda)
+{
+  e_00*=lambda;
+  e_01*=lambda;
+  e_10*=lambda;
+  e_11*=lambda;
+  
+  return *this;
+}
+
+Mat2 operator*(float lambda, Mat2 const& m)
+{
+  Mat2 result{m};
+  result *= lambda;
+  return result;
+}
+
+Mat2 operator*(Mat2 const& m,float lambda)
+{
+  Mat2 result{m};
+  result *= lambda;
+  return result;
+}
