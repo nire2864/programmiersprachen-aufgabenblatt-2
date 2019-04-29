@@ -113,6 +113,7 @@ TEST_CASE("Freier operator*(float,Vec2)", "[Vec2]")
   REQUIRE(result.y == 4.5f);
 }
 
+//Testcases matrices
 TEST_CASE("Matrix", "[Mat2]")
 {
   Mat2 a{};
@@ -206,6 +207,13 @@ TEST_CASE("freier operator*=(Mat2, float)", "[Mat2]")
   REQUIRE(result.e_01 == 6.0f);
   REQUIRE(result.e_10 == 8.0f);
   REQUIRE(result.e_11 == 10.0f);
+}
+
+TEST_CASE("Determinante", "[Mat2]")
+{
+  Mat2 a{1.0f,2.0f,3.0f,4.0f};
+  float s = a.det();
+  REQUIRE(s == -2);
 }
 
 

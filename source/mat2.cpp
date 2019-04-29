@@ -74,3 +74,4 @@ Mat2 operator*(Mat2 const& m,float lambda)
   result *= lambda;
   return result;
 }
+
