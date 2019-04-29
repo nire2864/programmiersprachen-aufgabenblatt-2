@@ -2,7 +2,9 @@
 #include <catch.hpp>
 #include "vec2.hpp"
 #include "mat2.hpp"
+#include "color.hpp"
 
+//TEST_CASES Vec2 memberfunctions
 TEST_CASE("struct Vec2")
 {
   Vec2 a;
@@ -57,7 +59,7 @@ TEST_CASE("Vec2 operator /=" , "[Vec2]")
 }
 
 
-//TEST_CASES freier Funktionen
+//TEST_CASES Vec2 freier Funktionen
 TEST_CASE("Freier operator+", "[Vec2]")
 {
   Vec2 u{3.7f,4.2f};
@@ -113,7 +115,7 @@ TEST_CASE("Freier operator*(float,Vec2)", "[Vec2]")
   REQUIRE(result.y == 4.5f);
 }
 
-//Testcases matrices
+//TEST_CASES matrices
 TEST_CASE("Matrix", "[Mat2]")
 {
   Mat2 a{};
@@ -237,6 +239,32 @@ TEST_CASE("transpose(Mat2)", "[Mat2]")
   REQUIRE(result.e_01 == 3.0f);
   REQUIRE(result.e_10 == 2.0f);
   REQUIRE(result.e_11 == 4.0f);
+
+}
+
+TEST_CASE("make_rotation_mat2(float phi)", "[Mat2]")
+{
+  float phi = 0.5f * M_PI;
+
+  Mat2 result = make_rotation_mat2(phi);
+  REQUIRE(result.e_00 == Approx(0.0f));
+  REQUIRE(result.e_01 == -1.0f);
+  REQUIRE(result.e_10 == 1.0f);
+  REQUIRE(result.e_11 == Approx(0.0f));
+}
+
+//TEST_CASES Color
+TEST_CASE("color", "[Color]")
+{
+  Color standard{};
+  Color pink{1.0f,0.0f,1.0f};
+
+  REQUIRE(standard.r == 0.5f);
+  REQUIRE(standard.g == 0.5f);
+  REQUIRE(standard.b == 0.5f);
+  REQUIRE(pink.r == 1.0f);
+  REQUIRE(pink.g == 0.0f);
+  REQUIRE(pink.b == 1.0f);
 
 }
 
