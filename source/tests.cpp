@@ -216,7 +216,15 @@ TEST_CASE("Determinante", "[Mat2]")
   REQUIRE(s == -2);
 }
 
-
+TEST_CASE("inverse", "[Mat2]")
+{
+  Mat2 m{1.0f,2.0f,3.0f,4.0f};
+  Mat2 result = inverse(m);
+  REQUIRE(result.e_00 == -2.0f);
+  REQUIRE(result.e_01 == 1.0f);
+  REQUIRE(result.e_10 == 1.5f);
+  REQUIRE(result.e_11 == -0.5f);
+}
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
