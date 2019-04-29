@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
 #include "vec2.hpp"
+#include "mat2.hpp"
 
 TEST_CASE("struct Vec2")
 {
@@ -53,9 +54,10 @@ TEST_CASE("Vec2 operator /=" , "[Vec2]")
   REQUIRE(first.y == 1.0f);
   //Division by zero
   first /= t;
-  //REQUIRE(first.x == 0.0f);
 }
 
+
+//TEST_CASES freier Funktionen
 TEST_CASE("Freier operator+", "[Vec2]")
 {
   Vec2 u{3.7f,4.2f};
@@ -98,7 +100,7 @@ TEST_CASE("Freier operator/", "[Vec2]")
 
   Vec2 result2 = v/t;
   REQUIRE(result2.x == 0.0f);
-  REQUIRE(result2.y == -1.0f);
+  REQUIRE(result2.y == 0.0f);
 }
 
 TEST_CASE("Freier operator*(float,Vec2)", "[Vec2]")
@@ -111,6 +113,44 @@ TEST_CASE("Freier operator*(float,Vec2)", "[Vec2]")
   REQUIRE(result.y == 4.5f);
 }
 
+TEST_CASE("Matrix", "[Mat2]")
+{
+  Mat2 a{};
+  Mat2 b{1,2,3,4};
+
+  REQUIRE(a.e_00 == 1);
+  REQUIRE(a.e_01 == 0);
+  REQUIRE(a.e_10 == 0);
+  REQUIRE(a.e_11 == 1);
+  REQUIRE(b.e_00 == 1);
+  REQUIRE(b.e_01 == 2);
+  REQUIRE(b.e_10 == 3);
+  REQUIRE(b.e_11 == 4);
+}
+
+TEST_CASE("operator*=(Mat2)", "[Mat2]")
+{
+  Mat2 a{2.0f,2.0f,2.0f,2.0f};
+  Mat2 b{3.0f,4.0f,5.0f,6.0f};
+ 
+  a*=b;
+  REQUIRE(a.e_00 == 16.0f);
+  REQUIRE(a.e_01 == 20.0f);
+  REQUIRE(a.e_10 == 16.0f);
+  REQUIRE(a.e_11 == 20.0f);
+}
+
+TEST_CASE("Freier operator*(Mat2,Mat2)", "[Mat2]")
+{
+  Mat2 a{2.0f,2.0f,2.0f,2.0f};
+  Mat2 b{3.0f,4.0f,5.0f,6.0f};
+
+  Mat2 result = a * b;
+  REQUIRE(result.e_00 == 16.0f);
+  REQUIRE(result.e_01 == 20.0f);
+  REQUIRE(result.e_10 == 16.0f);
+  REQUIRE(result.e_11 == 20.0f);
+}
 
 int main(int argc, char *argv[])
 {
