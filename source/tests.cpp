@@ -152,6 +152,26 @@ TEST_CASE("Freier operator*(Mat2,Mat2)", "[Mat2]")
   REQUIRE(result.e_11 == 20.0f);
 }
 
+TEST_CASE("Freier operator*(Mat2,Vec2)","[Mat2]")
+{
+  Mat2 m{1.0f,2.0f,3.0f,4.0f};
+  Vec2 v{5.0f,6.0f};
+
+  Vec2 result = m*v;
+  REQUIRE(result.x == 17);
+  REQUIRE(result.y == 39);
+}
+
+TEST_CASE("Freier operator*(Vec2,Mat2)","[Mat2]")
+{
+  Mat2 m{1.0f,2.0f,3.0f,4.0f};
+  Vec2 v{5.0f,6.0f};
+
+  Vec2 result = v*m;
+  REQUIRE(result.x == 17);
+  REQUIRE(result.y == 39);
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
