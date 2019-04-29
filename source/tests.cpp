@@ -212,19 +212,35 @@ TEST_CASE("freier operator*=(Mat2, float)", "[Mat2]")
 TEST_CASE("Determinante", "[Mat2]")
 {
   Mat2 a{1.0f,2.0f,3.0f,4.0f};
+  
   float s = a.det();
   REQUIRE(s == -2);
 }
 
-TEST_CASE("inverse", "[Mat2]")
+TEST_CASE("inverse(Mat2)", "[Mat2]")
 {
   Mat2 m{1.0f,2.0f,3.0f,4.0f};
+  
   Mat2 result = inverse(m);
   REQUIRE(result.e_00 == -2.0f);
   REQUIRE(result.e_01 == 1.0f);
   REQUIRE(result.e_10 == 1.5f);
   REQUIRE(result.e_11 == -0.5f);
 }
+
+TEST_CASE("transpose(Mat2)", "[Mat2]")
+{
+  Mat2 m{1.0f,2.0f,3.0f,4.0f};
+  
+  Mat2 result = transpose(m);
+  REQUIRE(result.e_00 == 1.0f);
+  REQUIRE(result.e_01 == 3.0f);
+  REQUIRE(result.e_10 == 2.0f);
+  REQUIRE(result.e_11 == 4.0f);
+
+}
+
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
