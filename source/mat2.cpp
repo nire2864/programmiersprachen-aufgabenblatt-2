@@ -75,3 +75,9 @@ Mat2 operator*(Mat2 const& m,float lambda)
   return result;
 }
 
+Mat2 inverse(Mat2 const& m)
+{
+  Mat2 n{m.e_11,-m.e_01,-m.e_10,m.e_00};
+  Mat2 result = 1/(m.det())*n;
+  return result;
+}
