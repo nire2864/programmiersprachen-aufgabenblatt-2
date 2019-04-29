@@ -22,3 +22,25 @@ Mat2 operator*(Mat2 const& m1, Mat2 const& m2)
     result *= m2;
     return result;
 }
+
+Vec2 operator*(Mat2 const& m, Vec2 const& v)
+{
+  auto a = v.x;
+  auto b = v.y;
+
+  Vec2 result{m.e_00 * a + m.e_01 * b,
+  m.e_10 * a + m.e_11 * b};
+
+  return result;
+}
+
+Vec2 operator*(Vec2 const& v, Mat2 const& m)
+{
+  auto a = v.x;
+  auto b = v.y;
+
+  Vec2 result{m.e_00 * a + m.e_01 * b,
+  m.e_10 * a + m.e_11 * b};
+
+  return result;
+}
