@@ -168,9 +168,46 @@ TEST_CASE("Freier operator*(Vec2,Mat2)","[Mat2]")
   Vec2 v{5.0f,6.0f};
 
   Vec2 result = v*m;
-  REQUIRE(result.x == 17);
+  REQUIRE(result.x == 17); 
   REQUIRE(result.y == 39);
 }
+
+TEST_CASE("operator*=(float)", "[Mat2]")
+{
+  Mat2 m{2.0f,3.0f,4.0f,5.0f};
+  float lambda = 2.0f;
+
+  m*=lambda;
+  REQUIRE(m.e_00 == 4.0f);
+  REQUIRE(m.e_01 == 6.0f);
+  REQUIRE(m.e_10 == 8.0f);
+  REQUIRE(m.e_11 == 10.0f);
+}
+
+TEST_CASE("freier operator*=(float, Mat2)", "[Mat2]")
+{
+  Mat2 m{2.0f,3.0f,4.0f,5.0f};
+  float lambda = 2.0f;
+
+  Mat2 result = lambda*m;
+  REQUIRE(result.e_00 == 4.0f);
+  REQUIRE(result.e_01 == 6.0f);
+  REQUIRE(result.e_10 == 8.0f);
+  REQUIRE(result.e_11 == 10.0f);
+}
+
+TEST_CASE("freier operator*=(Mat2, float)", "[Mat2]")
+{
+  Mat2 m{2.0f,3.0f,4.0f,5.0f};
+  float lambda = 2.0f;
+
+  Mat2 result = m*lambda;
+  REQUIRE(result.e_00 == 4.0f);
+  REQUIRE(result.e_01 == 6.0f);
+  REQUIRE(result.e_10 == 8.0f);
+  REQUIRE(result.e_11 == 10.0f);
+}
+
 
 int main(int argc, char *argv[])
 {
