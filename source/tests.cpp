@@ -272,7 +272,7 @@ TEST_CASE("color", "[Color]")
 //Rectangele & Circle circumference
 TEST_CASE("circumference rectangle","[Rectangle]")
 {
-  Rectangle rechteck{{-2.0f,4.0f},{10.0f,14.0f}};
+  Rectangle rechteck{{-2.0f,4.0f},{10.0f,14.0f},{}};
 
   auto result = rechteck.circumference();
   REQUIRE(result == 44.0f);
@@ -280,7 +280,7 @@ TEST_CASE("circumference rectangle","[Rectangle]")
 
 TEST_CASE("circumference circle", "[Circle]")
 {
-  Circle kreis{14,{14.0f,14.0f}};
+  Circle kreis{14,{14.0f,14.0f},{}};
 
   auto result = kreis.cirumference();
   REQUIRE(result == Approx(87.965f));

@@ -10,13 +10,14 @@ class Rectangle
 {
     public:
     Rectangle();
-    Rectangle(Vec2 const& Min, Vec2 const& Max);
+    Rectangle(Vec2 const& Min, Vec2 const& Max, Color const& Col);
     
     float circumference() const;
 
     private:
     Vec2 Min_{0.0f,0.0f};
     Vec2 Max_{0.0f,0.0f};
+    Color Color_;
 
 };
 
