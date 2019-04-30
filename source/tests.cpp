@@ -3,6 +3,8 @@
 #include "vec2.hpp"
 #include "mat2.hpp"
 #include "color.hpp"
+#include "circle.hpp"
+#include "rectangle.hpp"
 
 //TEST_CASES Vec2 memberfunctions
 TEST_CASE("struct Vec2")
@@ -265,9 +267,24 @@ TEST_CASE("color", "[Color]")
   REQUIRE(pink.r == 1.0f);
   REQUIRE(pink.g == 0.0f);
   REQUIRE(pink.b == 1.0f);
-
 }
 
+//Rectangele & Circle circumference
+TEST_CASE("circumference rectangle","[Rectangle]")
+{
+  Rectangle rechteck{{-2.0f,4.0f},{10.0f,14.0f}};
+
+  auto result = rechteck.circumference();
+  REQUIRE(result == 44.0f);
+}
+
+TEST_CASE("circumference circle", "[Circle]")
+{
+  Circle kreis{14,{14.0f,14.0f}};
+
+  auto result = kreis.cirumference();
+  REQUIRE(result == Approx(87.965f));
+}
 
 int main(int argc, char *argv[])
 {
