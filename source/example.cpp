@@ -2,11 +2,15 @@
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
+#include "circle.hpp"
+#include "rectangle.hpp"
 
 
 int main(int argc, char* argv[])
 {
-  Window win{std::make_pair(800,800)};
+  Window win{std::make_pair(700,700)};
+    //DEFAULT TESTS
+    Circle circle_1{100.f,{200.0f,200.0f},{0.99f,0.0f,0.99f}};
 
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -29,6 +33,9 @@ int main(int argc, char* argv[])
     win.draw_point(x1, y1, 1.0f, 0.0f, 0.0f);
     win.draw_point(x2, y2, 0.0f, 1.0f, 0.0f);
     win.draw_point(x3, y3, 0.0f, 0.0f, 1.0f);
+    
+    //DEFAULT TESTS
+    circle_1.draw(win);
 
     auto mouse_position = win.mouse_position();
     if (left_pressed) {
@@ -53,6 +60,7 @@ int main(int argc, char* argv[])
     win.draw_text(text_offset_x, text_offset_y, font_size, display_text);
 
     win.update();
+
   }
 
   return 0;

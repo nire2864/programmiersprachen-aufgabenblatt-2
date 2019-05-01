@@ -1,15 +1,33 @@
+#include <math.h>
 #include "circle.hpp"
+#include "mat2.hpp"
+
 
 Circle::Circle()
-    : radius_{0.0f}, Centre_{0.0f,0.0f}, Color_{}
+    : radius_{0.0f}, centre_{0.0f,0.0f}, color_{}
     {}
 
-Circle::Circle(float radius, Vec2 const& Centre, Color const& Col)
-    : radius_(radius), Centre_(Centre), Color_(Col)
+Circle::Circle(float radius, Vec2 const& centre, Color const& col)
+    : radius_(radius), centre_(centre), color_(col)
     {}
 
 float Circle::cirumference() const
 {
     float u = 2* M_PI * radius_;
     return u;
+}
+
+void Circle::draw(Window const& win)
+{
+    Vec2 start_point{centre_.x,centre_.y + radius_};
+    Vec2  end_point = start_point;
+    Mat2 rotation_mat = make_rotation_mat2((2* M_PI)/360);
+    for(int i = 1; i < 361; ++i)
+    {
+      Vec2 next_point = centre_ + (rotation_mat * (end_point - centre_));
+      win.draw_line(end_point.x,end_point.y,
+                    next_point.x,next_point.y,
+                    color_.r,color_.g,color_.b);
+      end_point = next_point;
+    }
 }
