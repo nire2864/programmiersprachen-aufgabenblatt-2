@@ -100,9 +100,9 @@ int main(int argc, char* argv[])
     Mat2 rotation_mat_m = make_rotation_mat2(m*(M_PI/30));
     Mat2 rotation_mat_h = make_rotation_mat2(h*(M_PI/30));
 
-    auto s_atm = second * rotation_mat_s; 
-    auto m_atm = minute * rotation_mat_m;
-    auto h_atm = hour * rotation_mat_h;
+    Vec2 s_atm = second * rotation_mat_s; 
+    Vec2 m_atm = minute * rotation_mat_m;
+    Vec2 h_atm = hour * rotation_mat_h;
 
     win.draw_line(350.0f,350.0f, s_atm.x+350.0f, s_atm.y+350.0f,1.0f,0.0f,0.0f,1.2f);
     win.draw_line(350.0f,350.0f, m_atm.x+350.0f, m_atm.y+350.0f,1.0f,1.0f,1.0f,1.4f);
