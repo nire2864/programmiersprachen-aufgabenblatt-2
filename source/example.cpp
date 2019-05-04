@@ -15,18 +15,21 @@ int main(int argc, char* argv[])
     //DEFAULT TESTS
     Color highlighting{1.0f,0.5137f,0.0f};
 
-    Circle circle_1{100.f,{200.0f,200.0f},{0.99f,0.0f,0.99f}};
-    Circle circle_2{150.f,{200.0f,200.0f},{0.99f,0.0f,0.99f}};
+    Circle circle_1{100.f,{350.0f,350.0f},{0.99f,0.0f,0.99f}};
+    Circle circle_2{150.f,{350.0f,350.0f},{0.99f,0.0f,0.99f}};
     
-    Rectangle rectangle_1{{50.0f,50.0f},{200.0f,200.0f},{0.2235f,1.0f,0.784f}};
-    Rectangle rectangle_2{{200.0f,200.0f},{450.0f,450.0f},{0.2235f,1.0f,0.784f}};
+    Rectangle rectangle_1{{200.0f,200.0f},{500.0f,500.0f},{0.2235f,1.0f,0.784f}};
+    Rectangle rectangle_2{{250.0f,250.0f},{450.0f,450.0f},{0.2235f,1.0f,0.784f}};
 
     //Clock
     Vec2 clock_centre{350.0f,350.0f};
     Circle clock_1{300.0f,clock_centre,{0.0f,0.0f,0.0f}};
+    Circle clock_knob{3.0f,clock_centre,{0.0f,0.0f,0.0f}};
     Vec2 second{0.0f,-290.0f};
     Vec2 minute{0.0f,-250.0f};
     Vec2 hour{0.0f,-200.0f};
+    Vec2 pos1_start{0,-298.0f};
+    Vec2 pos2_start{0,-285.0f};
 
     //Container
     std::vector<Circle> circles;
@@ -91,7 +94,49 @@ int main(int argc, char* argv[])
       }
     }
     //TEST_CLOCK
+    //drawing clock
     clock_1.draw(win, 1.5f);
+    clock_knob.draw(win, 1.0f);
+
+    Vec2 pos1_0 = pos1_start * make_rotation_mat2(M_PI/6);
+    Vec2 pos2_0 = pos2_start * make_rotation_mat2(M_PI/6);
+    Vec2 pos1_1 = pos1_start * make_rotation_mat2(2*M_PI/6);
+    Vec2 pos2_1 = pos2_start * make_rotation_mat2(2*M_PI/6);
+    Vec2 pos1_2 = pos1_start * make_rotation_mat2(3*M_PI/6);
+    Vec2 pos2_2 = pos2_start * make_rotation_mat2(3*M_PI/6);
+    Vec2 pos1_3 = pos1_start * make_rotation_mat2(4*M_PI/6);
+    Vec2 pos2_3 = pos2_start * make_rotation_mat2(4*M_PI/6);
+    Vec2 pos1_4 = pos1_start * make_rotation_mat2(5*M_PI/6);
+    Vec2 pos2_4 = pos2_start * make_rotation_mat2(5*M_PI/6);
+    Vec2 pos1_5 = pos1_start * make_rotation_mat2(6*M_PI/6);
+    Vec2 pos2_5 = pos2_start * make_rotation_mat2(6*M_PI/6);
+    Vec2 pos1_6 = pos1_start * make_rotation_mat2(7*M_PI/6);
+    Vec2 pos2_6 = pos2_start * make_rotation_mat2(7*M_PI/6);
+    Vec2 pos1_7 = pos1_start * make_rotation_mat2(8*M_PI/6);
+    Vec2 pos2_7 = pos2_start * make_rotation_mat2(8*M_PI/6);
+    Vec2 pos1_8 = pos1_start * make_rotation_mat2(9*M_PI/6);
+    Vec2 pos2_8 = pos2_start * make_rotation_mat2(9*M_PI/6);
+    Vec2 pos1_9 = pos1_start * make_rotation_mat2(10*M_PI/6);
+    Vec2 pos2_9 = pos2_start * make_rotation_mat2(10*M_PI/6);
+    Vec2 pos1_10 = pos1_start * make_rotation_mat2(11*M_PI/6);
+    Vec2 pos2_10 = pos2_start * make_rotation_mat2(11*M_PI/6);
+
+    win.draw_line(pos1_start.x+350,pos1_start.y+350,pos2_start.x+350,pos2_start.y+350,0.0f,0.0f,0.0f,2.0f);
+    win.draw_line(pos1_0.x+350,pos1_0.y+350,pos2_0.x+350,pos2_0.y+350,0.0f,0.0f,0.0f,2.0f);
+    win.draw_line(pos1_1.x+350,pos1_1.y+350,pos2_1.x+350,pos2_1.y+350,0.0f,0.0f,0.0f,2.0f);
+    win.draw_line(pos1_2.x+350,pos1_2.y+350,pos2_2.x+350,pos2_2.y+350,0.0f,0.0f,0.0f,2.0f);
+    win.draw_line(pos1_3.x+350,pos1_3.y+350,pos2_3.x+350,pos2_3.y+350,0.0f,0.0f,0.0f,2.0f);
+    win.draw_line(pos1_4.x+350,pos1_4.y+350,pos2_4.x+350,pos2_4.y+350,0.0f,0.0f,0.0f,2.0f);
+    win.draw_line(pos1_5.x+350,pos1_5.y+350,pos2_5.x+350,pos2_5.y+350,0.0f,0.0f,0.0f,2.0f);
+    win.draw_line(pos1_6.x+350,pos1_6.y+350,pos2_6.x+350,pos2_6.y+350,0.0f,0.0f,0.0f,2.0f);
+    win.draw_line(pos1_7.x+350,pos1_7.y+350,pos2_7.x+350,pos2_7.y+350,0.0f,0.0f,0.0f,2.0f);
+    win.draw_line(pos1_8.x+350,pos1_8.y+350,pos2_8.x+350,pos2_8.y+350,0.0f,0.0f,0.0f,2.0f);
+    win.draw_line(pos1_9.x+350,pos1_9.y+350,pos2_9.x+350,pos2_9.y+350,0.0f,0.0f,0.0f,2.0f);
+    win.draw_line(pos1_10.x+350,pos1_10.y+350,pos2_10.x+350,pos2_10.y+350,0.0f,0.0f,0.0f,2.0f);
+    
+    
+
+    //setting time
     float time = win.get_time();
     float s = fmod(time,60);
     float m = fmod(time/60,60);
@@ -107,7 +152,6 @@ int main(int argc, char* argv[])
     win.draw_line(350.0f,350.0f, s_atm.x+350.0f, s_atm.y+350.0f,1.0f,0.0f,0.0f,1.2f);
     win.draw_line(350.0f,350.0f, m_atm.x+350.0f, m_atm.y+350.0f,1.0f,1.0f,1.0f,1.4f);
     win.draw_line(350.0f,350.0f, h_atm.x+350.0f, h_atm.y+350.0f,0.0f,0.0f,0.0f,1.6f);
-
 
 
     auto mouse_position = win.mouse_position();
