@@ -5,11 +5,13 @@
 #include <vector>
 #include "circle.hpp"
 #include "rectangle.hpp"
+#include "mat2.hpp"
 
 
 int main(int argc, char* argv[])
 {
   Window win{std::make_pair(700,700)};
+
     //DEFAULT TESTS
     Color highlighting{1.0f,0.5137f,0.0f};
 
@@ -18,6 +20,13 @@ int main(int argc, char* argv[])
     
     Rectangle rectangle_1{{50.0f,50.0f},{200.0f,200.0f},{0.2235f,1.0f,0.784f}};
     Rectangle rectangle_2{{200.0f,200.0f},{450.0f,450.0f},{0.2235f,1.0f,0.784f}};
+
+    //Clock
+    Vec2 clock_centre{350.0f,350.0f};
+    Circle clock_1{300.0f,clock_centre,{0.0f,0.0f,0.0f}};
+    Vec2 second{0.0f,-290.0f};
+    Vec2 minute{0.0f,-250.0f};
+    Vec2 hour{0.0f,-200.0f};
 
     //Container
     std::vector<Circle> circles;
@@ -56,7 +65,7 @@ int main(int argc, char* argv[])
     circle_2.draw(win, 5.0f);
     rectangle_1.draw(win);
     rectangle_2.draw(win, 3.0f);
-
+    
     //if(is_inside) highlight
     for(Circle const& cir: circles)
     {
@@ -81,6 +90,25 @@ int main(int argc, char* argv[])
         rec.draw(win);
       }
     }
+    //TEST_CLOCK
+    clock_1.draw(win, 1.5f);
+    float time = win.get_time();
+    float s = fmod(time,60);
+    float m = fmod(time/60,60);
+    float h = fmod(time/3600,12);
+    Mat2 rotation_mat_s = make_rotation_mat2(s*(M_PI/30));
+    Mat2 rotation_mat_m = make_rotation_mat2(m*(M_PI/30));
+    Mat2 rotation_mat_h = make_rotation_mat2(h*(M_PI/30));
+
+    auto s_atm = second * rotation_mat_s; 
+    auto m_atm = minute * rotation_mat_m;
+    auto h_atm = hour * rotation_mat_h;
+
+    win.draw_line(350.0f,350.0f, s_atm.x+350.0f, s_atm.y+350.0f,1.0f,0.0f,0.0f,1.2f);
+    win.draw_line(350.0f,350.0f, m_atm.x+350.0f, m_atm.y+350.0f,1.0f,1.0f,1.0f,1.4f);
+    win.draw_line(350.0f,350.0f, h_atm.x+350.0f, h_atm.y+350.0f,0.0f,0.0f,0.0f,1.6f);
+
+
 
     auto mouse_position = win.mouse_position();
     if (left_pressed) {
