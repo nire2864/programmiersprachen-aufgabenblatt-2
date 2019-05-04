@@ -11,7 +11,9 @@ int main(int argc, char* argv[])
   Window win{std::make_pair(700,700)};
     //DEFAULT TESTS
     Circle circle_1{100.f,{200.0f,200.0f},{0.99f,0.0f,0.99f}};
+    Rectangle rectangle_1{{50.0f,50.0f},{200.0f,200.0f},{0.2235f,1.0f,0.784f}};
 
+    
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
       win.close();
@@ -36,6 +38,7 @@ int main(int argc, char* argv[])
     
     //DEFAULT TESTS
     circle_1.draw(win);
+    rectangle_1.draw(win);
 
     auto mouse_position = win.mouse_position();
     if (left_pressed) {
