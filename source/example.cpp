@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <utility>
 #include <cmath>
+#include <vector>
 #include "circle.hpp"
 #include "rectangle.hpp"
 
@@ -10,9 +11,23 @@ int main(int argc, char* argv[])
 {
   Window win{std::make_pair(700,700)};
     //DEFAULT TESTS
-    Circle circle_1{100.f,{200.0f,200.0f},{0.99f,0.0f,0.99f}};
-    Rectangle rectangle_1{{50.0f,50.0f},{200.0f,200.0f},{0.2235f,1.0f,0.784f}};
+    Color highlighting{1.0f,0.5137f,0.0f};
 
+    Circle circle_1{100.f,{200.0f,200.0f},{0.99f,0.0f,0.99f}};
+    Circle circle_2{150.f,{200.0f,200.0f},{0.99f,0.0f,0.99f}};
+    
+    Rectangle rectangle_1{{50.0f,50.0f},{200.0f,200.0f},{0.2235f,1.0f,0.784f}};
+    Rectangle rectangle_2{{200.0f,200.0f},{450.0f,450.0f},{0.2235f,1.0f,0.784f}};
+
+    //Container
+    std::vector<Circle> circles;
+    std::vector<Rectangle> rectangles;
+
+    circles.push_back(circle_1);
+    circles.push_back(circle_2);
+
+    rectangles.push_back(rectangle_1);
+    rectangles.push_back(rectangle_2);
     
   while (!win.should_close()) {
     if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -38,7 +53,34 @@ int main(int argc, char* argv[])
     
     //DEFAULT TESTS
     circle_1.draw(win);
+    circle_2.draw(win, 5.0f);
     rectangle_1.draw(win);
+    rectangle_2.draw(win, 3.0f);
+
+    //if(is_inside) highlight
+    for(Circle const& cir: circles)
+    {
+      if(cir.is_inside({(float) std::get<0>(win.mouse_position()),(float) std::get<1>(win.mouse_position())}))
+      {
+        cir.draw(win, highlighting);
+      }
+      else
+      {
+        cir.draw(win);
+      }
+    }
+
+    for(Rectangle const& rec: rectangles)
+    {
+      if(rec.is_inside({(float) std::get<0>(win.mouse_position()),(float) std::get<1>(win.mouse_position())}))
+      {
+        rec.draw(win, highlighting);
+      }
+      else
+      {
+        rec.draw(win);
+      }
+    }
 
     auto mouse_position = win.mouse_position();
     if (left_pressed) {
