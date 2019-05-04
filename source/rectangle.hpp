@@ -5,19 +5,21 @@
 #include <math.h>
 #include "color.hpp"
 #include "vec2.hpp"
+#include "window.hpp"
 
 class Rectangle
 {
     public:
     Rectangle();
-    Rectangle(Vec2 const& Min, Vec2 const& Max, Color const& Col);
+    Rectangle(Vec2 const& min, Vec2 const& max, Color const& col);
     
     float circumference() const;
+    void draw(Window const& win);
 
     private:
-    Vec2 Min_{0.0f,0.0f};
-    Vec2 Max_{0.0f,0.0f};
-    Color Color_;
+    Vec2 min_{0.0f,0.0f};
+    Vec2 max_{0.0f,0.0f};
+    Color color_;
 
 };
 
