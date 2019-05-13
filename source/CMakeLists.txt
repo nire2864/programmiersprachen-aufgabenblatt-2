@@ -33,4 +33,9 @@ target_link_libraries(tests
   ${OPENGL_LIBRARIES}
   )
 
+add_executable(aufgabe_2_und_3
+aufgabe_2_und_3.cpp
+)
 
+add_executable(beispielprogramm
+beispielprogramm.cpp)
