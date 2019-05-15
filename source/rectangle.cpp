@@ -40,7 +40,7 @@ void Rectangle::draw(Window const& win, float thickness, Color color) const
     win.draw_line(min_.x,max_.y,max_.x,max_.y,color.r,color.g,color.b, thickness);
 }
 
-void Rectangle::draw(Window const& win, Color color) const
+void Rectangle::draw(Window const& win, Color const& color) const
 {
     win.draw_line(max_.x,max_.y,max_.x,min_.y,color.r,color.g,color.b);
     win.draw_line(max_.x,min_.y,min_.x,min_.y,color.r,color.g,color.b);

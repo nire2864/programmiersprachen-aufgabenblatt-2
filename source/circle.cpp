@@ -64,7 +64,7 @@ void Circle::draw(Window const& win, float thickness, Color color) const
     }
 }
 
-void Circle::draw(Window const& win, Color color) const
+void Circle::draw(Window const& win, Color const& color) const
 {
     Vec2 start_point{centre_.x,centre_.y + radius_};
     Vec2  end_point = start_point;

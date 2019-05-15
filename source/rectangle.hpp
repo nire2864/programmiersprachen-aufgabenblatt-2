@@ -17,7 +17,7 @@ class Rectangle
     void draw(Window const& win) const;
     void draw(Window const& win, float thickness) const;
     void draw(Window const& win, float thickness, Color color) const;
-    void draw(Window const& win, Color color) const;
+    void draw(Window const& win, Color const& color) const;
     bool is_inside(Vec2 const& point) const;
 
     private:
