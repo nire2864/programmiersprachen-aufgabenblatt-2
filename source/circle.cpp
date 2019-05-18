@@ -110,3 +110,52 @@ std::ostream& operator<<(std::ostream& os, Circle const& circle)
 {
    return circle.print(os);
 }
+
+std::string Circle::getName() const
+{
+    return name_;
+}
+
+float Circle::getRadius() const
+{
+    return radius_;
+}
+
+bool operator< (Circle const& c1_in, Circle const& c2_in)
+{
+    if(c1_in.getRadius() < c2_in.getRadius())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    
+}
+
+bool operator> (Circle const& c1_in, Circle const& c2_in)
+{
+    if(c1_in.getRadius() > c2_in.getRadius())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    
+}
+
+bool operator== (Circle const& c1_in, Circle const& c2_in)
+{
+    if(c1_in.getRadius() == c2_in.getRadius())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+    
+}

@@ -286,6 +286,36 @@ TEST_CASE("circumference circle", "[Circle]")
   REQUIRE(result == Approx(87.965f));
 }
 
+TEST_CASE("operator<", "[Cirlce]")
+{
+    Circle circle1{23.0f,{25.0f,30.0f},{},"Hans"};
+    Circle circle2{20.0f,{15.0f,4.0f},{0.33f,0.22f,0.33f},"Peter"};
+    Circle circle3{3.0f,{10.0f,30.0f},{1.0f,0.0f,1.0f},"Otto"};
+
+    REQUIRE((circle1 < circle2)==false);
+    REQUIRE((circle3 < circle2)==true);
+}
+
+TEST_CASE("operator>", "[Cirlce]")
+{
+    Circle circle1{23.0f,{25.0f,30.0f},{},"Hans"};
+    Circle circle2{20.0f,{15.0f,4.0f},{0.33f,0.22f,0.33f},"Peter"};
+    Circle circle3{3.0f,{10.0f,30.0f},{1.0f,0.0f,1.0f},"Otto"};
+
+    REQUIRE((circle1 > circle2)==true);
+    REQUIRE((circle3 > circle2)==false);
+}
+
+TEST_CASE("operator==", "[Cirlce]")
+{
+    Circle circle1{23.0f,{25.0f,30.0f},{},"Hans"};
+    Circle circle2{20.0f,{15.0f,4.0f},{0.33f,0.22f,0.33f},"Peter"};
+    Circle circle3{20.0f,{10.0f,30.0f},{1.0f,0.0f,1.0f},"Otto"};
+
+    REQUIRE((circle3 == circle2)==true);
+    REQUIRE((circle1 == circle2)==false);
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);

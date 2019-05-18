@@ -21,6 +21,8 @@ class Circle
     void draw(Window const& win, Color const& color) const;
     bool is_inside(Vec2 const& point) const;
     std::ostream& print(std::ostream& os) const;
+    std::string getName() const;
+    float getRadius() const;
 
     private:
     float radius_ = 0.0f;
@@ -30,5 +32,8 @@ class Circle
 };
 
 std::ostream& operator<<(std::ostream& os, Circle const& circle);
+bool operator< (Circle const& c1_in, Circle const& c2_in);
+bool operator> (Circle const& c1_in, Circle const& c2_in);
+bool operator== (Circle const& c1_in, Circle const& c2_in);
 
 #endif
