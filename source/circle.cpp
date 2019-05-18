@@ -1,4 +1,6 @@
 #include <math.h>
+#include <iostream>
+#include <ostream>
 #include "circle.hpp"
 #include "mat2.hpp"
 
@@ -10,6 +12,11 @@ Circle::Circle()
 Circle::Circle(float radius, Vec2 const& centre, Color const& col)
     : radius_(radius), centre_(centre), color_(col)
     {}
+
+Circle::Circle(float radius, Vec2 const& centre, Color const& col, std::string const& name)
+    : radius_(radius), centre_(centre), color_(col), name_(name)
+    {}
+
 
 float Circle::cirumference() const
 {
@@ -91,4 +98,15 @@ bool Circle::is_inside(Vec2 const& point) const
     {
         return false;
     }
+}
+
+std::ostream& Circle::print(std::ostream& os) const
+{
+    os << "[" << name_ << ";{" << centre_.x << "," << centre_.y <<"};"<< radius_ <<";{"<< color_.r << "," << color_.g << "," << color_.b <<"}]";
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, Circle const& circle) 
+{
+   return circle.print(os);
 }
