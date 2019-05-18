@@ -2,6 +2,7 @@
 #include <list>
 #include <set>
 #include <map>
+#include <vector>
 #include <algorithm>
 #include <cstdlib>
 #include <iterator>
@@ -48,6 +49,15 @@ for(auto const& element : map_occurence) //Kein Elementardatentyp --> reference;
     std::cout << "[" <<element.first << ":" << element.second << "]  ";     //Da die map die Werte als Pair<int,int> abspeichert 
 }                                                                           //muss der Key sowie der Value über .first/.second
 std::cout << "\n";                                                          //addressiert werden.
+
+
+
+//Aufgabe 3.10
+std::vector<unsigned int> vector_of_random_ints;
+std::copy(std::begin(list_of_random_ints), std::end(list_of_random_ints), std::inserter(vector_of_random_ints, vector_of_random_ints.begin()));
+std::cout << "\n Aufgabe 3.10: \n";
+std::copy(std::begin(vector_of_random_ints),std::end(vector_of_random_ints), std::ostream_iterator<int>(std::cout, " "));
+std::cout << std::endl;
 
 
 return 0;
