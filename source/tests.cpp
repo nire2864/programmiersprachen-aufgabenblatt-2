@@ -333,6 +333,9 @@ TEST_CASE("sorting circles")
     std::sort(sorted_circles.begin(),sorted_circles.end());
     REQUIRE(std::is_sorted(sorted_circles.begin(),sorted_circles.end()));
 
+    std::sort(sorted_circles.begin(),sorted_circles.end());
+    REQUIRE(std::is_sorted(sorted_circles.begin(),sorted_circles.end()));
+
 }
 
 int main(int argc, char *argv[])
